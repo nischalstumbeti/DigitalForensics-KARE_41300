@@ -1,153 +1,110 @@
-Experiment.1
+<table style="width:100%; font-family: Verdana, Tahoma; border: none;">
+  <tr>
+    <td align="left"><strong>Experiment No:</strong> 01</td>
+    <td align="center"><h1>FTK Imager: A Forensic Imaging Tool Overview</h1></td>
+    <td align="right"><strong>Date:</strong> </td>
+  </tr>
+</table>
 
-FTK Imager: A Forensic Imaging Tool Overview
+---
 
-Acquiring Volatile Memory (RAM) Using FTK Imager
+## Acquiring Volatile Memory (RAM) Using FTK Imager
 
-**Link for installation file
-:-** <https://www.exterro.com/digital-forensics-software/ftk-imager>
+**Installation Link:**  
+[Download FTK Imager](https://www.exterro.com/digital-forensics-software/ftk-imager)
 
-Steps to Capture RAM Using FTK Imager
+---
 
-1\. Run as Administrator
+### Steps to Capture RAM Using FTK Imager  
 
-- Open FTK Imager with administrative privileges.
+1. **Run as Administrator**  
+   - Open **FTK Imager** with administrative privileges.  
+   - Right-click the FTK Imager icon and select **Run as Administrator**.
+   - ![Experiment 1 - 01](https://github.com/user-attachments/assets/38a84839-a30e-450e-8b42-c06d12909282)
 
-- Right-click the FTK Imager icon and select Run as administrator
 
-**2. Initiate Memory Capture**
 
-- In the top menu bar, click File → Capture Memory from the dropdown
-  list. 
+2. **Initiate Memory Capture**  
+   - In the menu bar, go to **File → Capture Memory**.
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/19978a1d-e640-43ea-9f0a-970a155b08ff" />
 
-**3. Configure Destination**
 
-A dialog box will appear where you configure where and how the memory
-will be saved.
+3. **Configure Destination**  
+   - **Destination Path:** Select an **external drive** for saving.  
+   - **Destination Filename:** Use `memdump.mem` or a descriptive name.  
+   - **Optional:**  
+     - **Include pagefile.sys** (captures virtual memory).  
+     - **Create AD1 File** (saves in AccessData container format).
+     - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/c3b226cd-d794-4e38-b087-af58f6426f9c" />
 
-- **Destination Path:**  
-  Click **Browse** to select a folder on an **external drive**
 
-- **Destination Filename:**  
-  You can keep the default memdump.mem or assign a more descriptive
-  name.
+4. **Start Capture**  
+   - Click **Capture Memory** to begin acquisition.
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/6c95e0f4-939d-411d-a952-e77a5b890c49" />
+ 
 
-- **Optional:**
+5. **Wait for Completion**  
+   - Progress is shown with a bar.  
+   - Time depends on RAM size.  
+   - Memory dump file will be saved in your chosen folder.  
 
-- **Include pagefile.sys**  
-  Check this box to capture pagefile.sys, which is virtual memory stored
-  on the disk.
+---
 
-- **create AD1 file**  
-  Saves the memory dump in an AccessData-specific container file.
+## Acquiring Non-Volatile Memory (Disk Image) Using FTK Imager  
 
-**4. Start Capture**
+1. **Start the Process**  
+   - In FTK Imager, go to **File → Create Disk Image**
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/b6807f8c-7a8d-467e-9711-3879752104ed" />
+ 
 
-- Click the **Capture Memory** button to begin acquisition.
+2. **Select Source Evidence Type**  
+   - **Physical Drive:** Entire disk, partitions, MBR.  
+   - **Logical Drive:** Specific partition (e.g., `C:`).  
+   - **Image File:** Convert/copy an existing image.  
+   - **Folder Contents:** Image a specific folder.
+   - <img width="940" height="532" alt="image" src="https://github.com/user-attachments/assets/28c651d0-73d7-4a82-94a5-49b188a288d5" />
 
-- 
 
-**5. Wait for Completion**
+3. **Select the Source Drive**  
+   - Choose a physical drive (connected via **write-blocker**).  
+   - Click **Finish**.
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/d0104ec4-bf65-4319-a54f-939f080a8748" />
 
-- A progress bar will indicate the capture status.
 
-- Capture time depends on the system\'s RAM size.
+4. **Configure Image Destination**  
+   - Click **Add...** in the *Create Image* window.
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/aeec3996-9a23-4b75-8a8d-8fb996b59439" />
 
-- Once finished, the memory dump file will be available in the
-  destination folder.
+   - **Image Type:**  
+     - `E01`: Recommended; includes compression, verification.  
+     - `Raw (DD)`: Bit-by-bit copy.
+     - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/ee09a98b-2564-41d9-ad95-95f44a89a1f2" />
 
-- //Acquiring Non-Volatile Memory (Disk Image) Using FTK Imager//
+   - **Evidence Item Information:** Case details, examiner name, description.
+   - <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/1c86e379-d453-42a5-8144-6750be88ff01" />
+  
+   - **Destination Folder:** Save to a separate drive; name appropriately.  
+   - **Image Fragment Size:** Set split size (or `0` for single file).  
 
-1\. Start the Process
+5. **Start Imaging**  
+   - Click **Finish** and return to the *Create Image* screen.  
+   - Enable **Verify images after creation**.  
+   - Click **Start**.  
+- <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/230511d3-fda9-409a-a08c-8abbc1aae675" />
 
-- In FTK Imager, go to the top menu bar: File → Create Disk Image\....
+6. **Completion and Verification**  
+   - Imaging duration varies with drive size.  
+   - FTK Imager verifies **MD5** & **SHA1** hashes.  
+   - Matching hashes confirm forensic integrity.  
 
-- 
+---
 
-**2. Select Source Evidence Type**
+## References  
+- [FTK Imager Official Website](https://accessdata.com/product-download/ftk-imager-version-4-5)  
+- FTK Imager Documentation  
 
-A window will appear asking you to choose the source type:
+---
 
-- **Physical Drive:** Images the entire disk, including all partitions,
-  unallocated space, and the Master Boot Record (MBR).
-
-- **Logical Drive:** Images a specific partition (e.g., C: drive).
-
-- **Image File:** Converts or copies an existing image file.
-
-- **Contents of a Folder:** Creates an image of a specific folder only.
-
-**3. Select the Source Drive**
-
-- From the dropdown, choose the physical drive to image (connected
-  via **write-blocker**).
-
-- Click **Finish**.
-
-- 
-
-**4. Configure the Image Destination**
-
-- Click **Add\...** in the \"Create Image\" window to define the
-  image **format** and **destination**.
-
-<!-- -->
-
-- **Image Type:**
-
-  - **E01 (EnCase Format):** Recommended; includes compression,
-    metadata, and error-checking.
-
-  - **Raw (DD):** Bit-for-bit copy with no extra features.
-
-\-
-
-- **Fill in Evidence Item Information:**
-
-  - Enter case details, examiner name, and description.
-
-  - This information is stored in the image metadata (important for
-    documentation).
-
-- **Choose Destination Folder:**
-
-  - Must be a different drive from the source.
-
-  - Name the image file (e.g., Case001_SuspectHDD).
-
-- **Image Fragment Size:**
-
-  - Set a value to split the image into multiple parts.
-
-  - Set to 0 for a single image file.
-
-  - 
-
-**5. Start the Imaging Process**
-
-- Click **Finish** to return to the \"Create Image\" screen.
-
-- **Check \"Verify images after they are created\"** to calculate hash
-  values and ensure integrity.
-
-- Click **Start**.
-
-- 
-
-**6. Completion and Hash Verification**
-
-- The imaging process may take time depending on the drive size.
-
-- After completion, FTK Imager verifies the hashes automatically.
-
-- A final window shows **MD5** and **SHA1** hashes for both the source
-  drive and image.
-
-- Matching hashes confirm the forensic image\'s integrity.
-
-**References**
-
-- [FTK Imager Official
-  Website](https://accessdata.com/product-download/ftk-imager-version-4-5)
-
-- FTK Imager Documentation
+<div align="center" style="font-size:14px; font-family: Verdana, Tahoma; color:gray;">
+This Expriment is Done by Nischal S Tumbeti - 99230041300 | 23S19 | CSE Department - SoC | KARE
+</div>
